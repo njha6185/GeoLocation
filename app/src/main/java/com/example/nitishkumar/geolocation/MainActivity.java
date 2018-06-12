@@ -73,10 +73,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private static final float DEFAULT_ZOOM = 15f;
     public static ImageView weatherRelatedImage;
     public static TextView tempPlaceValue;
+    private static int weatherImageIndex;
     List<Address> addresses;
     View clickscreen;
     ImageView mapImageView;
     SupportMapFragment mapFragment;
+    Button weatherfrwrdImage, weatherBackImage;
     private boolean mLocationPermissionGranted = false;
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
@@ -85,6 +87,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private RelativeLayout mapLayoutActivity, parent_layout;
     private CheckBox imageRatioCheck, readyRemoveCheckbox;
     private TextView addressTextview, addressCity, addressState, addressCountry, addressDateTime;
+    private int[] weatherImageArray = {R.drawable.w32, R.drawable.w44, R.drawable.w37, R.drawable.w38, R.drawable.w39, R.drawable.w40,
+            R.drawable.w1, R.drawable.w2, R.drawable.w3, R.drawable.w4, R.drawable.w5, R.drawable.w6, R.drawable.w7, R.drawable.w8,
+            R.drawable.w9, R.drawable.w10, R.drawable.w11, R.drawable.w12, R.drawable.w13, R.drawable.w14, R.drawable.w15,
+            R.drawable.w16, R.drawable.w17, R.drawable.w18, R.drawable.w19, R.drawable.w20, R.drawable.w21, R.drawable.w22,
+            R.drawable.w23, R.drawable.w24, R.drawable.w25, R.drawable.w26, R.drawable.w27, R.drawable.w28, R.drawable.w29,
+            R.drawable.w30, R.drawable.w31, R.drawable.w33, R.drawable.w34, R.drawable.w35, R.drawable.w36, R.drawable.w41,
+            R.drawable.w42, R.drawable.w43, R.drawable.w45, R.drawable.w46, R.drawable.w47};
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -141,7 +150,36 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         rotateImage();
         scaleImage();
         screenshot();
+        changeWeatherImage();
+    }
 
+    public void changeWeatherImage() {
+        weatherfrwrdImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (weatherImageIndex > 46) {
+                    weatherImageIndex = 0;
+                } else if (weatherImageIndex < 0) {
+                    weatherImageIndex = 0;
+                }
+                weatherRelatedImage.setImageResource(weatherImageArray[weatherImageIndex]);
+                weatherImageIndex++;
+            }
+        });
+
+        weatherBackImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (weatherImageIndex < 0) {
+                    weatherImageIndex = 46;
+                } else if (weatherImageIndex > 46) {
+                    --weatherImageIndex;
+                }
+                weatherRelatedImage.setImageResource((weatherImageArray[weatherImageIndex]));
+                weatherImageIndex--;
+            }
+        });
     }
 
     public void screenshot() {
@@ -219,10 +257,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.snapshot(new GoogleMap.SnapshotReadyCallback() {
             @Override
             public void onSnapshotReady(Bitmap bitmap) {
-                mapImageView.setImageBitmap(bitmap);
-                mapImageView.setVisibility(View.VISIBLE);
-                mapImageView.setAlpha(0.76f);
-                mapFragment.getView().setVisibility(View.GONE);
+//                mapImageView.setImageBitmap(bitmap);
+//                mapImageView.setVisibility(View.VISIBLE);
+//                mapImageView.setAlpha(0.76f);
+//                mapFragment.getView().setVisibility(View.GONE);
             }
         });
     }
@@ -359,6 +397,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             imageRatioCheck.setVisibility(View.GONE);
             readyRemoveCheckbox.setVisibility(View.GONE);
             clickscreen.setVisibility(View.VISIBLE);
+            weatherBackImage.setVisibility(View.GONE);
+            weatherfrwrdImage.setVisibility(View.GONE);
         } else {
             addButton.setVisibility(View.VISIBLE);
             imgMinusScaleX.setVisibility(View.VISIBLE);
@@ -369,6 +409,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             imageRatioCheck.setVisibility(View.VISIBLE);
             readyRemoveCheckbox.setVisibility(View.VISIBLE);
             clickscreen.setVisibility(View.GONE);
+            weatherBackImage.setVisibility(View.VISIBLE);
+            weatherfrwrdImage.setVisibility(View.VISIBLE);
         }
 
     }
@@ -471,6 +513,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         tempPlaceValue = (TextView) findViewById(R.id.tempValue);
         clickscreen = (View) findViewById(R.id.clickView);
         mapImageView = (ImageView) findViewById(R.id.imageMap);
+        weatherfrwrdImage = (Button) findViewById(R.id.imagefrwrd);
+        weatherBackImage = (Button) findViewById(R.id.imagebackward);
+        weatherImageIndex = 0;
 //        mapLayoutActivity = (RelativeLayout)findViewById(R.id.lower_layout_container);
 //        parent_layout = (RelativeLayout)findViewById(R.id.parentLayoutContainer);
     }

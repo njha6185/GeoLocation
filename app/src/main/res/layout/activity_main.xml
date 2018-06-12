@@ -70,6 +70,24 @@
         android:text="Y-"
         android:textColor="#f0f0" />
 
+    <Button
+        android:id="@+id/imagefrwrd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/minusScalex"
+        android:layout_margin="20dp"
+        android:layout_toRightOf="@id/minusScalex"
+        android:background="@drawable/ic_arrow_back_black_24dp" />
+
+    <Button
+        android:id="@+id/imagebackward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/minusScaley"
+        android:layout_margin="20dp"
+        android:layout_toRightOf="@id/minusScaley"
+        android:background="@drawable/ic_arrow_forward_black_24dp" />
+
     <CheckBox
         android:id="@+id/ratioCheckbox"
         android:layout_width="wrap_content"
@@ -147,7 +165,7 @@
                     android:layout_margin="10dp"
                     android:maxLines="1"
                     android:textAlignment="center"
-                    android:textColor="#D3D3D3"
+                    android:textColor="#E0E0E0"
                     app:autoSizeMaxTextSize="100sp"
                     app:autoSizeMinTextSize="2sp"
                     app:autoSizeStepGranularity="1sp"
@@ -164,7 +182,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:textAlignment="center"
-                        android:textColor="#D3D3D3"
+                        android:textColor="#E0E0E0"
                         android:textSize="15sp" />
 
                     <TextView
@@ -173,7 +191,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:textAlignment="center"
-                        android:textColor="#D3D3D3"
+                        android:textColor="#E0E0E0"
                         android:textSize="15sp" />
 
                     <TextView
@@ -182,7 +200,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:textAlignment="center"
-                        android:textColor="#D3D3D3"
+                        android:textColor="#E0E0E0"
                         android:textSize="15sp" />
 
                     <TextView
@@ -195,7 +213,7 @@
                         android:layout_weight="1"
                         android:maxLines="1"
                         android:textAlignment="center"
-                        android:textColor="#D3D3D3"
+                        android:textColor="#E0E0E0"
                         app:autoSizeMaxTextSize="15sp"
                         app:autoSizeMinTextSize="2sp"
                         app:autoSizeStepGranularity="1sp"
@@ -231,7 +249,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:textAlignment="center"
-                        android:textColor="#D3D3D3"
+                        android:textColor="#E0E0E0"
                         android:textSize="20sp" />
 
                 </LinearLayout>
